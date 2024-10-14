@@ -5,12 +5,9 @@
 package com.mycompany.analizadorsintactico.frontend;
 
 import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -47,13 +44,16 @@ public class Editor extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("jButton1");
 
-        info.setText("Fila: 0 Columna: 0");
+        info.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        info.setText("Fila: 1 Columna: 1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -62,7 +62,7 @@ public class Editor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(318, 318, 318)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
                 .addComponent(info)
                 .addGap(68, 68, 68))
         );
@@ -90,16 +90,38 @@ public class Editor extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
+        jMenuBar1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        jMenu1.setText("Archivo");
+        jMenu1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setText("Guardar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Grafico");
+        jMenu2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Reportes");
+        jMenu3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.out.println("guardado");
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,7 +163,9 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -155,29 +179,32 @@ public class Editor extends javax.swing.JFrame {
         jPanel3.add(primero);
         jPanel2.add(editor, java.awt.BorderLayout.CENTER);
         editor.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
+                actualizarCursor();
                 editor();
             }
         });
     }
 
     private void editor() {
-        System.out.println(editor.getText());
-            String f = editor.getText() + "f";
-            char[] g = f.toCharArray();
-            int cantidad = 1;
-            for (char c : g) {
-                if (c == '\n') {
-                    cantidad++;
-                }
+        String f = editor.getText() + "f";
+        char[] g = f.toCharArray();
+        int cantidad = 1;
+        for (char c : g) {
+            if (c == '\n') {
+                cantidad++;
             }
+        }
+        do {
             if (cantidad != numFilas) {
-                if (cantidad < numFilas) {
-                    eliminarFila();
-                } else if (cantidad > numFilas) {
-                    agregarFila();
-                }
+            if (cantidad < numFilas) {
+                eliminarFila();
+            } else if (cantidad > numFilas) {
+                agregarFila();
             }
+        }
+        } while (cantidad != numFilas);
     }
 
     private void agregarFila() {
@@ -198,5 +225,17 @@ public class Editor extends javax.swing.JFrame {
         this.repaint();
         jPanel3.revalidate();
         jPanel3.repaint();
+    }
+
+    private void actualizarCursor() {
+        int caretPosition = editor.getCaretPosition();
+        int row;
+        int col;
+        int line = editor.getDocument().getDefaultRootElement().getElementIndex(caretPosition);
+        int start = editor.getDocument().getDefaultRootElement().getElement(line).getStartOffset();
+        row = line +1;
+        col = caretPosition - start +1 ;
+        info.setText("Fila: " + row + " Columna: " + col);
+        info.repaint();
     }
 }
