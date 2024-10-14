@@ -4,6 +4,7 @@
  */
 package com.mycompany.analizadorsintactico.frontend;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,6 @@ import javax.swing.event.DocumentListener;
 public class Editor extends javax.swing.JFrame {
 
     private int numFilas;
-    private int ultimaColumna;
     private List<JLabel> filas;
 
     /**
@@ -154,24 +154,10 @@ public class Editor extends javax.swing.JFrame {
         JLabel primero = new JLabel("1");
         jPanel3.add(primero);
         jPanel2.add(editor, java.awt.BorderLayout.CENTER);
-        editor.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
+        editor.addKeyListener(new KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
                 editor();
-                actualizarPosicionCursor();
             }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                editor();
-                actualizarPosicionCursor();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-
-            }
-            
         });
     }
 
@@ -201,6 +187,8 @@ public class Editor extends javax.swing.JFrame {
         jPanel3.add(nuevaFila);
         this.filas.add(nuevaFila);
         this.repaint();
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }
 
     private void eliminarFila() {
@@ -208,31 +196,7 @@ public class Editor extends javax.swing.JFrame {
         JLabel fila = filas.removeLast();
         jPanel3.remove(fila);
         this.repaint();
-    }
-    
-    private void actualizarPosicionCursor() {
-        try {
-            int caretPos = editor.getCaretPosition();
-            int fila = editor.getDocument().getDefaultRootElement().getElementIndex(caretPos) + 1;
-
-            // Obtener el texto hasta el caret y detectar si se hizo un salto de línea
-            String textoHastaCaret = editor.getText(0, caretPos);
-            boolean esSaltoDeLinea = textoHastaCaret.endsWith("\n");
-
-            if (esSaltoDeLinea) {
-                // Si es un salto de línea, mantenemos la columna anterior
-                int startOfPrevLine = editor.getDocument().getDefaultRootElement().getElement(fila - 2).getStartOffset();
-                ultimaColumna = caretPos - startOfPrevLine;
-            } else {
-                // Obtener la columna normal
-                int startOffset = editor.getDocument().getDefaultRootElement().getElement(fila - 1).getStartOffset();
-                ultimaColumna = caretPos - startOffset + 1;
-            }
-
-            // Actualizar el label con la fila y la columna
-            info.setText("Fila: " + fila + ", Columna: " + ultimaColumna);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }
 }
