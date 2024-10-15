@@ -45,5 +45,10 @@ public class Token {
     public void setFila(int fila) {
         this.fila = fila;
     }
+
+    @Override
+    public String toString() {
+        return "Token{" + "token=" + token + ", lexema=" + lexema + ", columna=" + columna + ", fila=" + fila + '}';
+    }
     
 }

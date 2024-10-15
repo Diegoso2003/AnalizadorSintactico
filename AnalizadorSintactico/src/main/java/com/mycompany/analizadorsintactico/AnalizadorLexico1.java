@@ -373,8 +373,8 @@ public class AnalizadorLexico1 {
 
     private void addList(TipoToken tipo, int fila, int columna) {
         Token token = new Token();
-        token.setFila(fila);
-        token.setColumna(columna);
+        token.setFila(fila + 1);
+        token.setColumna(columna + 1);
         token.setToken(tipo);
         token.setLexema(yytext());
         lista.add(token);
@@ -382,8 +382,8 @@ public class AnalizadorLexico1 {
 
     private void addListaErrores(int fila, int columna) {
         Token token = new Token();
-        token.setFila(fila);
-        token.setColumna(columna);
+        token.setFila(fila + 1);
+        token.setColumna(columna + 1);
         token.setToken(TipoToken.ERROR);
         token.setLexema(yytext());
         lista.add(token);

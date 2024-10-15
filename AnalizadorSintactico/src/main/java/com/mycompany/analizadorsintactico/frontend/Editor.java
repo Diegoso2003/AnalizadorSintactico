@@ -4,10 +4,17 @@
  */
 package com.mycompany.analizadorsintactico.frontend;
 
+import com.mycompany.analizadorsintactico.AnalizadorLexico1;
+import com.mycompany.analizadorsintactico.token.Token;
+import java.awt.Color;
 import java.awt.event.KeyAdapter;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
+import javax.swing.text.Element;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
 
 /**
  *
@@ -17,6 +24,8 @@ public class Editor extends javax.swing.JFrame {
 
     private int numFilas;
     private List<JLabel> filas;
+    private List<Token> tokens;
+    private List<Token> errores;
 
     /**
      * Creates new form Editor
@@ -24,6 +33,7 @@ public class Editor extends javax.swing.JFrame {
     public Editor() {
         initComponents();
         configurarEditor();
+        agregarEstilos();
         numFilas = 1;
     }
 
@@ -37,7 +47,7 @@ public class Editor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnAnalizar = new javax.swing.JButton();
         info = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
@@ -50,7 +60,13 @@ public class Editor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        btnAnalizar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        btnAnalizar.setText("Analizar");
+        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarActionPerformed(evt);
+            }
+        });
 
         info.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         info.setText("Fila: 1 Columna: 1");
@@ -61,8 +77,8 @@ public class Editor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(318, 318, 318)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE)
+                .addComponent(btnAnalizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addComponent(info)
                 .addGap(68, 68, 68))
         );
@@ -71,7 +87,7 @@ public class Editor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnAnalizar)
                     .addComponent(info))
                 .addGap(32, 32, 32))
         );
@@ -123,44 +139,14 @@ public class Editor extends javax.swing.JFrame {
         System.out.println("guardado");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
+        analizar();
+    }//GEN-LAST:event_btnAnalizarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Editor().setVisible(true);
-            }
-        });
-    }
     private javax.swing.JTextPane editor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizar;
     private javax.swing.JLabel info;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -176,13 +162,16 @@ public class Editor extends javax.swing.JFrame {
         editor = new javax.swing.JTextPane();
         filas = new ArrayList<>();
         JLabel primero = new JLabel("1");
+        primero.setFont(new java.awt.Font("Liberation Sans", 0, 18));
         jPanel3.add(primero);
         jPanel2.add(editor, java.awt.BorderLayout.CENTER);
+        editor.setFont(new java.awt.Font("Liberation Sans", 0, 18));
         editor.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 actualizarCursor();
                 editor();
+                colorear();
             }
         });
     }
@@ -198,12 +187,12 @@ public class Editor extends javax.swing.JFrame {
         }
         do {
             if (cantidad != numFilas) {
-            if (cantidad < numFilas) {
-                eliminarFila();
-            } else if (cantidad > numFilas) {
-                agregarFila();
+                if (cantidad < numFilas) {
+                    eliminarFila();
+                } else if (cantidad > numFilas) {
+                    agregarFila();
+                }
             }
-        }
         } while (cantidad != numFilas);
     }
 
@@ -211,6 +200,7 @@ public class Editor extends javax.swing.JFrame {
         numFilas++;
         String fila = numFilas + "";
         JLabel nuevaFila = new JLabel(fila);
+        nuevaFila.setFont(new java.awt.Font("Liberation Sans", 0, 18));
         jPanel3.add(nuevaFila);
         this.filas.add(nuevaFila);
         this.repaint();
@@ -233,9 +223,66 @@ public class Editor extends javax.swing.JFrame {
         int col;
         int line = editor.getDocument().getDefaultRootElement().getElementIndex(caretPosition);
         int start = editor.getDocument().getDefaultRootElement().getElement(line).getStartOffset();
-        row = line +1;
-        col = caretPosition - start +1 ;
+        row = line + 1;
+        col = caretPosition - start + 1;
         info.setText("Fila: " + row + " Columna: " + col);
         info.repaint();
+    }
+
+    private void analizar() {
+        String texto = editor.getText();
+        AnalizadorLexico1 analizadorLexico = new AnalizadorLexico1(new StringReader(texto));
+        try {
+            while (analizadorLexico.yylex() != AnalizadorLexico1.YYEOF) {
+            }
+
+            this.tokens = analizadorLexico.getLista();
+            this.errores = analizadorLexico.getListaErrores();
+        } catch (Exception e) {
+        }
+    }
+
+    private void agregarEstilos() {
+        Style estiloRojo = editor.addStyle("Rojo", null);
+        StyleConstants.setForeground(estiloRojo, Color.RED);
+        Style estiloNegro = editor.addStyle("Negro", null);
+        StyleConstants.setForeground(estiloNegro, Color.BLACK);
+        Style estiloAzul = editor.addStyle("Azul", null);
+        StyleConstants.setForeground(estiloAzul, Color.BLUE);
+        Style estiloVerde = editor.addStyle("Verde", null);
+        StyleConstants.setForeground(estiloVerde, Color.GREEN);
+        Style estiloNaranja = editor.addStyle("Naranja", null);
+        StyleConstants.setForeground(estiloNaranja, Color.ORANGE);
+        Style estiloGris = editor.addStyle("Gris", null);
+        StyleConstants.setForeground(estiloGris, Color.LIGHT_GRAY);
+        Style estiloAmarillo = editor.addStyle("Amarillo", null);
+        StyleConstants.setForeground(estiloAmarillo, Color.YELLOW);
+        Style estiloFucsia = editor.addStyle("Fucsia", null);
+        StyleConstants.setForeground(estiloFucsia, Color.MAGENTA);
+        Style estiloMorado = editor.addStyle("Morado", null);
+        StyleConstants.setForeground(estiloMorado, new Color(128, 0, 128));
+    }
+
+    private int posicionAbsoluta(int fila, int columna) {
+        Element root = editor.getDocument().getDefaultRootElement();
+        if (fila >= 1 && fila <= root.getElementCount()) {
+            Element filaElement = root.getElement(fila - 1); // Fila es 1-indexed, convertir a 0-indexed
+            int posInicioFila = filaElement.getStartOffset();
+            int posFinFila = filaElement.getEndOffset();
+            int posicionAbsoluta = posInicioFila + columna - 1; // Columna también es 1-indexed
+            if (posicionAbsoluta <= posFinFila) {
+                return posicionAbsoluta;
+            }
+        }
+        return -1;
+    }
+
+    private void colorear() {
+        analizar();
+        for(Token token: tokens){
+            int pos = posicionAbsoluta(token.getFila(), token.getColumna());
+            Style estilo = editor.getStyle(token.getToken().getColor());
+            editor.getStyledDocument().setCharacterAttributes(pos, token.getLexema().length(), estilo, false); // Colorea 5 caracteres
+        }
     }
 }

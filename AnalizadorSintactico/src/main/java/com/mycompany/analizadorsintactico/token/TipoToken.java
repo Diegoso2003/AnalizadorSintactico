@@ -9,21 +9,21 @@ package com.mycompany.analizadorsintactico.token;
  * @author rafael-cayax
  */
 public enum TipoToken {
-    ARITMETICO("negro"),
-    BOOLEANO("azul"),
-    CADENA("verde"),
-    CREATE("naranja"),
-    COMENTARIO("gris"),
-    DECIMAL("azul"),
-    ENTERO("azul"),
-    ERROR("indefinido"),
-    FECHA("amarillo"),
-    FUNCION_DE_AGREGACION("azul"),
-    IDENTIFICADOR("fucsia"),
-    LOGICO("naranja"),
-    SIGNOS("negro"),
-    RELACIONAL("negro"),
-    TIPO_DE_DATO("morado");
+    ARITMETICO("Negro"),
+    BOOLEANO("Azul"),
+    CADENA("Verde"),
+    CREATE("Naranja"),
+    COMENTARIO("Gris"),
+    DECIMAL("Azul"),
+    ENTERO("Azul"),
+    ERROR("Rojo"),
+    FECHA("Amarillo"),
+    FUNCION_DE_AGREGACION("Azul"),
+    IDENTIFICADOR("Fucsia"),
+    LOGICO("Naranja"),
+    SIGNOS("Negro"),
+    RELACIONAL("Negro"),
+    TIPO_DE_DATO("Morado");
     
     private final String color;
 
