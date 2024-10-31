@@ -1,0 +1,8 @@
+E	->	D,L
+D	->	iT,D
+D	->	iT
+D	->	iTpk
+D	->	iTpk,D
+D	->	iTon,D
+D	->	iTon
+D	->	iTu

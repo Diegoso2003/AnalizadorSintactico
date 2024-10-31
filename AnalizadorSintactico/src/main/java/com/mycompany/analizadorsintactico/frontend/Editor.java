@@ -5,6 +5,7 @@
 package com.mycompany.analizadorsintactico.frontend;
 
 import com.mycompany.analizadorsintactico.AnalizadorLexico1;
+import com.mycompany.analizadorsintactico.AnalizadorSintactico;
 import com.mycompany.analizadorsintactico.token.Token;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
@@ -26,7 +27,7 @@ public class Editor extends javax.swing.JFrame {
     private List<JLabel> filas;
     private List<Token> tokens;
     private List<Token> errores;
-
+    private boolean hacer;
     /**
      * Creates new form Editor
      */
@@ -35,6 +36,7 @@ public class Editor extends javax.swing.JFrame {
         configurarEditor();
         agregarEstilos();
         numFilas = 1;
+        hacer = false;
     }
 
     /**
@@ -141,6 +143,9 @@ public class Editor extends javax.swing.JFrame {
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         analizar();
+        AnalizadorSintactico sintactico = new AnalizadorSintactico();
+        sintactico.analizar(tokens);
+        hacer = true;
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private javax.swing.JTextPane editor;
@@ -230,7 +235,7 @@ public class Editor extends javax.swing.JFrame {
     }
 
     private void analizar() {
-        String texto = editor.getText();
+        String texto = editor.getText() + " ";
         AnalizadorLexico1 analizadorLexico = new AnalizadorLexico1(new StringReader(texto));
         try {
             while (analizadorLexico.yylex() != AnalizadorLexico1.YYEOF) {
@@ -238,6 +243,15 @@ public class Editor extends javax.swing.JFrame {
 
             this.tokens = analizadorLexico.getLista();
             this.errores = analizadorLexico.getListaErrores();
+            if (hacer) {
+                for(Token token : tokens){
+                System.out.print(token.getLexema());
+                    System.out.print(", " + token.getFila());
+                    System.out.print(", " + token.getColumna());
+                    System.out.println("");
+            }
+            }
+            hacer = false;
         } catch (Exception e) {
         }
     }
