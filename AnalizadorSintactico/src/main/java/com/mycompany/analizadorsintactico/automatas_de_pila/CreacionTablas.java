@@ -5,7 +5,6 @@
 package com.mycompany.analizadorsintactico.automatas_de_pila;
 
 import com.mycompany.analizadorsintactico.otros.Transicion;
-import com.mycompany.analizadorsintactico.token.TipoToken;
 import com.mycompany.analizadorsintactico.token.Token;
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +31,7 @@ public class CreacionTablas extends AutomataPila{
         transiciones.add(new Transicion(Arrays.asList('D',',','L',')'),'E'));
     }
     
+    @Override
     protected void apilar(List<Token> tokens) throws TokenException{
         boolean finInstruccion = false;
         while(!finInstruccion && contador.getContadorActual() < tokens.size()){

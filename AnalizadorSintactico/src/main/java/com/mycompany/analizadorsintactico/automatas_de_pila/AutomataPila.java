@@ -28,7 +28,7 @@ public abstract class AutomataPila {
 
     protected List<Character> pila;
 
-    protected boolean esTransicion(List<Character> transicion) {
+    private boolean esTransicion(List<Character> transicion) {
         int j = pila.size() - 1;
         for (int i = transicion.size() - 1; i >= 0; i--) {
             char p = pila.get(j);
@@ -41,7 +41,7 @@ public abstract class AutomataPila {
         return true;
     }
 
-    protected void removerLista(List<Character> transicion, char c) {
+    private void removerLista(List<Character> transicion, char c) {
         for (int i = 0; i < transicion.size(); i++) {
             pila.removeLast();
         }

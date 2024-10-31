@@ -18,15 +18,17 @@ import java.util.stream.Collectors;
  */
 public class AnalizadorSintactico {
 
-    private CreacionDatabase baseDeDatos;
-    private ActualizacionTabla actu;
-    private CreacionTablas tabla;
-    private Contador contador;
+    private final CreacionDatabase baseDeDatos;
+    private final ActualizacionTabla actu;
+    private final CreacionTablas tabla;
+    private final Eliminacion delete;
+    private final Contador contador;
     
     public AnalizadorSintactico() {
         contador = Contador.conseguirContador();
         baseDeDatos = new CreacionDatabase();
         tabla = new CreacionTablas();
+        delete = new Eliminacion();
         actu = new ActualizacionTabla();
     }
     
@@ -45,6 +47,9 @@ public class AnalizadorSintactico {
             } else if (actu.analizar(this.lista)) {
                 contador.guardarPunto();
                 System.out.println("actualizacion tabla");
+            } else if (delete.analizar(this.lista)) {
+                contador.guardarPunto();
+                System.out.println("es eleiminacion");
             } else {
                 System.out.println("cadena invalida");
                 return;
