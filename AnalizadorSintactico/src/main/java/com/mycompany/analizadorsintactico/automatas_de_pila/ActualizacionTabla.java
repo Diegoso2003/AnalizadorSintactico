@@ -74,7 +74,5 @@ public class ActualizacionTabla extends AutomataPila{
             evaluarPila();
             contador.aumentarYObtener();
         }       
-    }
-    
-    
+    }    
 }
