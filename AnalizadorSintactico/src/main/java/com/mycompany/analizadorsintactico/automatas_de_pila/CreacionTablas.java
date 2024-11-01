@@ -6,6 +6,7 @@ package com.mycompany.analizadorsintactico.automatas_de_pila;
 
 import com.mycompany.analizadorsintactico.otros.Transicion;
 import com.mycompany.analizadorsintactico.token.Token;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,9 +15,11 @@ import java.util.List;
  * @author rafael-cayax
  */
 public class CreacionTablas extends AutomataPila{
+    private List<Token> tabla;
     
     public CreacionTablas() {
         super();
+        tabla = new ArrayList<>();
         transiciones.add(new Transicion(Arrays.asList('i','T'),'D'));
         transiciones.add(new Transicion(Arrays.asList('D',',','D'),'D'));
         transiciones.add(new Transicion(Arrays.asList('D','o','n'),'D'));
@@ -70,8 +73,13 @@ public class CreacionTablas extends AutomataPila{
                 }
             }
             evaluarPila();
+            tabla.add(token);
             contador.aumentarYObtener();
         }       
+    }
+
+    public List<Token> getTabla() {
+        return tabla;
     }
     
 }

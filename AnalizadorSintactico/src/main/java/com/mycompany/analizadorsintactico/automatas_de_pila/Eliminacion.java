@@ -21,7 +21,6 @@ public class Eliminacion extends AutomataPila{
         transiciones.add(new Transicion(Arrays.asList('e','f','i',';'),'G'));
         transiciones.add(new Transicion(Arrays.asList('e','f','i','W'),'G'));
         transiciones.add(new Transicion(Arrays.asList('w','L'),'W'));
-        transiciones.add(new Transicion(Arrays.asList('w','L'),'W'));
         transiciones.add(new Transicion(Arrays.asList('H',';'),'L'));
         transiciones.add(new Transicion(Arrays.asList('H',',','H'),'H'));
         transiciones.add(new Transicion(Arrays.asList('d','=','d'),'H'));

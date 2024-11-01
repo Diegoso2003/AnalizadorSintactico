@@ -27,7 +27,11 @@ public class Editor extends javax.swing.JFrame {
     private List<JLabel> filas;
     private List<Token> tokens;
     private List<Token> errores;
+    private List<Token> erroreG;
+    private AnalizadorSintactico sintactico;
+    private List<List<Token>> tablasG;
     private boolean hacer;
+
     /**
      * Creates new form Editor
      */
@@ -37,6 +41,8 @@ public class Editor extends javax.swing.JFrame {
         agregarEstilos();
         numFilas = 1;
         hacer = false;
+        erroreG = new ArrayList<>();
+        tablasG = new ArrayList<>();
     }
 
     /**
@@ -59,6 +65,11 @@ public class Editor extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        reporteLexico = new javax.swing.JMenuItem();
+        erroresSintacticos = new javax.swing.JMenuItem();
+        tablasMod = new javax.swing.JMenuItem();
+        acciones = new javax.swing.JMenuItem();
+        tablas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +141,37 @@ public class Editor extends javax.swing.JFrame {
 
         jMenu3.setText("Reportes");
         jMenu3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        reporteLexico.setText("Reporte Errores Lexicos");
+        reporteLexico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reporteLexicoActionPerformed(evt);
+            }
+        });
+        jMenu3.add(reporteLexico);
+
+        erroresSintacticos.setText("Reporte Errores Sintactico");
+        erroresSintacticos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                erroresSintacticosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(erroresSintacticos);
+
+        tablasMod.setText("Reporte Tablas Modificadas");
+        jMenu3.add(tablasMod);
+
+        acciones.setText("Reporte De Acciones");
+        jMenu3.add(acciones);
+
+        tablas.setText("Reporte Tablas");
+        tablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tablasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(tablas);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -143,14 +185,32 @@ public class Editor extends javax.swing.JFrame {
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         analizar();
-        AnalizadorSintactico sintactico = new AnalizadorSintactico();
+        sintactico = new AnalizadorSintactico();
         sintactico.analizar(tokens);
+        tablasG = sintactico.getTablaC();
+        erroreG = sintactico.getErroresS();
         hacer = true;
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
+    private void reporteLexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteLexicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reporteLexicoActionPerformed
+
+    private void tablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablasActionPerformed
+        ReporteTablas reporte = new ReporteTablas();
+        reporte.agregar(tablasG);
+        reporte.setVisible(true);
+    }//GEN-LAST:event_tablasActionPerformed
+
+    private void erroresSintacticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erroresSintacticosActionPerformed
+        
+    }//GEN-LAST:event_erroresSintacticosActionPerformed
+
     private javax.swing.JTextPane editor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem acciones;
     private javax.swing.JButton btnAnalizar;
+    private javax.swing.JMenuItem erroresSintacticos;
     private javax.swing.JLabel info;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -161,6 +221,9 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem reporteLexico;
+    private javax.swing.JMenuItem tablas;
+    private javax.swing.JMenuItem tablasMod;
     // End of variables declaration//GEN-END:variables
 
     private void configurarEditor() {
@@ -244,12 +307,12 @@ public class Editor extends javax.swing.JFrame {
             this.tokens = analizadorLexico.getLista();
             this.errores = analizadorLexico.getListaErrores();
             if (hacer) {
-                for(Token token : tokens){
-                System.out.print(token.getLexema());
+                for (Token token : tokens) {
+                    System.out.print(token.getLexema());
                     System.out.print(", " + token.getFila());
                     System.out.print(", " + token.getColumna());
                     System.out.println("");
-            }
+                }
             }
             hacer = false;
         } catch (Exception e) {
@@ -293,7 +356,7 @@ public class Editor extends javax.swing.JFrame {
 
     private void colorear() {
         analizar();
-        for(Token token: tokens){
+        for (Token token : tokens) {
             int pos = posicionAbsoluta(token.getFila(), token.getColumna());
             Style estilo = editor.getStyle(token.getToken().getColor());
             editor.getStyledDocument().setCharacterAttributes(pos, token.getLexema().length(), estilo, false); // Colorea 5 caracteres

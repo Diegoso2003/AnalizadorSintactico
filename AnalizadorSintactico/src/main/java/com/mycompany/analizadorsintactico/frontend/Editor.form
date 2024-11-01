@@ -45,6 +45,42 @@
               <Font name="Liberation Sans" size="18" style="0"/>
             </Property>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="reporteLexico">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte Errores Lexicos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reporteLexicoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="erroresSintacticos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte Errores Sintactico"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="erroresSintacticosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="tablasMod">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte Tablas Modificadas"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="acciones">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte De Acciones"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="tablas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte Tablas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tablasActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

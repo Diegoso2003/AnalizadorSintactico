@@ -50,7 +50,7 @@ public class Modificador extends AutomataPila{
                 case ENTERO -> pila.add('m');
                 case PAREMTESIS_A -> pila.add('(');
                 case PAREMTESIS_B -> pila.add(')');
-                case DECIMAL -> pila.add('l');
+                case DECIMAL_TIPO -> pila.add('l');
                 case SIGNOS_COMA -> pila.add(',');
                 case NUMERIC -> pila.add('n');
                 case DATE -> pila.add('T');

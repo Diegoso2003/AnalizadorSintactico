@@ -89,7 +89,7 @@ ESPACIOS = [" "\r\t\b\n]
 "DELETE"                                    { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DELETE; yybegin(FINAL); }
 "DESC"                                      { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DESC; yybegin(FINAL); }
 "DROP"                                      { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DROP; yybegin(FINAL); }
-"EXIST"                                     { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.EXIST; yybegin(FINAL); }
+"EXISTS"                                    { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.EXIST; yybegin(FINAL); }
 "FALSE"                                     { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BOOLEANO; yybegin(FINAL); }
 "FOREIGN"                                   { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FOREIGN; yybegin(FINAL); }
 "FROM"                                      { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FROM; yybegin(FINAL); }
