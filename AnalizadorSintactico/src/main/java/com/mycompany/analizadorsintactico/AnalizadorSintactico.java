@@ -24,6 +24,7 @@ public class AnalizadorSintactico {
     private final Eliminacion delete;
     private final Contador contador;
     private final Modificador mod;
+    private final Insert insert;
     
     public AnalizadorSintactico() {
         contador = Contador.conseguirContador();
@@ -32,6 +33,7 @@ public class AnalizadorSintactico {
         delete = new Eliminacion();
         actu = new ActualizacionTabla();
         mod = new Modificador();
+        insert = new Insert();
     }
     
     private List<Token> lista;
@@ -55,6 +57,9 @@ public class AnalizadorSintactico {
             } else if (mod.analizar(this.lista)) {
                 contador.guardarPunto();
                 System.out.println("es modificador");
+            } else if (insert.analizar(this.lista)) {
+                contador.guardarPunto();
+                System.out.println("es insert");
             } else {
                 System.out.println("cadena invalida");
                 return;
