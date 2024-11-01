@@ -9,5 +9,50 @@ package com.mycompany.analizadorsintactico.otros;
  * @author rafael-cayax
  */
 public class InformeDTO {
+    private int insert;
+    private int select;
+    private int update;
+    private int delete;
+    private int create;
+
+    public int getInsert() {
+        return insert;
+    }
+
+    public void setInsert(int insert) {
+        this.insert = insert;
+    }
+
+    public int getSelect() {
+        return select;
+    }
+
+    public void setSelect(int select) {
+        this.select = select;
+    }
+
+    public int getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(int update) {
+        this.update = update;
+    }
+
+    public int getDelete() {
+        return delete;
+    }
+
+    public void setDelete(int delete) {
+        this.delete = delete;
+    }
+
+    public int getCreate() {
+        return create;
+    }
+
+    public void setCreate(int create) {
+        this.create = create;
+    }
     
 }

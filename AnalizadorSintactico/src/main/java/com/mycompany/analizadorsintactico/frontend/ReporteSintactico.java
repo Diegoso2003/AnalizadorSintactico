@@ -79,6 +79,7 @@ public class ReporteSintactico extends javax.swing.JFrame {
             datos[2] = token.getFila();
             datos[3] = token.getColumna();
             datos[4] = "Secuencia de token invalida";
+            datos = new Object[5];
         }
     }
 
