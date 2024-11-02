@@ -50,6 +50,7 @@ public abstract class AutomataPila {
     
     public boolean analizar(List<Token> tokens){
         try {
+            pila.clear();
             contador.regresarPuntoGuardado();
             contador.guardarPunto();
             apilar(tokens);

@@ -39,10 +39,7 @@ public class ReporteSintactico extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Token", "Tipo Token", "Fila", "Columna", "Descripcion"
@@ -79,8 +76,11 @@ public class ReporteSintactico extends javax.swing.JFrame {
             datos[2] = token.getFila();
             datos[3] = token.getColumna();
             datos[4] = "Secuencia de token invalida";
+            tabla.addRow(datos);
             datos = new Object[5];
         }
+        
+        this.repaint();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

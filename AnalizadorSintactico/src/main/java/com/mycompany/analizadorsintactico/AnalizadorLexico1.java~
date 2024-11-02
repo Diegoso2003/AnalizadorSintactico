@@ -117,9 +117,9 @@ public class AnalizadorLexico1 {
     "\1\71\2\0\1\72\1\0\1\73\4\0\1\74\4\0"+
     "\1\75\1\0\1\76\2\0\1\77\1\0\1\100\2\0"+
     "\1\101\1\0\1\102\4\0\1\103\1\104\1\105\1\106"+
-    "\1\107\2\0\1\110\1\111\2\0\1\44\1\112\1\113"+
-    "\1\114\1\115\1\0\1\116\2\0\1\117\5\0\1\120"+
-    "\1\121\1\0\1\122";
+    "\1\107\2\0\1\110\1\111\2\0\1\112\1\113\1\114"+
+    "\1\115\1\116\1\0\1\117\2\0\1\120\5\0\1\121"+
+    "\1\122\1\0\1\123";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[273];
@@ -869,412 +869,417 @@ public class AnalizadorLexico1 {
             { lexema = yytext(); yybegin(ERROR); fila=yyline; columna = yycolumn;
             }
           // fall through
-          case 83: break;
+          case 84: break;
           case 2:
             { /* no hacer nada */
             }
           // fall through
-          case 84: break;
+          case 85: break;
           case 3:
             { System.out.print(yytext());
             }
           // fall through
-          case 85: break;
+          case 86: break;
           case 4:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.PAREMTESIS_A);
             }
           // fall through
-          case 86: break;
+          case 87: break;
           case 5:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.PAREMTESIS_B);
             }
           // fall through
-          case 87: break;
+          case 88: break;
           case 6:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.ARITMETICO);
             }
           // fall through
-          case 88: break;
+          case 89: break;
           case 7:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_COMA);
             }
           // fall through
-          case 89: break;
+          case 90: break;
           case 8:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_PUNTO);
             }
           // fall through
-          case 90: break;
+          case 91: break;
           case 9:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ENTERO; yybegin(FINAL);
             }
           // fall through
-          case 91: break;
+          case 92: break;
           case 10:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_PUNTO_Y_COMA);
             }
           // fall through
-          case 92: break;
+          case 93: break;
           case 11:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.RELACIONAL);
             }
           // fall through
-          case 93: break;
+          case 94: break;
           case 12:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_IGUAL);
             }
           // fall through
-          case 94: break;
+          case 95: break;
           case 13:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.IDENTIFICADOR; yybegin(FINAL);
             }
           // fall through
-          case 95: break;
+          case 96: break;
           case 14:
             { lexema += yytext(); yybegin(ERROR);
             }
           // fall through
-          case 96: break;
+          case 97: break;
           case 15:
             { addList(tipo); yybegin(YYINITIAL);
             }
           // fall through
-          case 97: break;
+          case 98: break;
           case 16:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.PAREMTESIS_A); yybegin(YYINITIAL);
             }
           // fall through
-          case 98: break;
+          case 99: break;
           case 17:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.PAREMTESIS_B); yybegin(YYINITIAL);
             }
           // fall through
-          case 99: break;
+          case 100: break;
           case 18:
             { addList(tipo); lexema = yytext(); fila=yyline; columna = yycolumn; addList(TipoToken.ARITMETICO); yybegin(YYINITIAL);
             }
           // fall through
-          case 100: break;
+          case 101: break;
           case 19:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_COMA); yybegin(YYINITIAL);
             }
           // fall through
-          case 101: break;
+          case 102: break;
           case 20:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_PUNTO); yybegin(YYINITIAL);
             }
           // fall through
-          case 102: break;
+          case 103: break;
           case 21:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_PUNTO_Y_COMA); yybegin(YYINITIAL);
             }
           // fall through
-          case 103: break;
+          case 104: break;
           case 22:
             { addList(tipo); lexema = yytext(); fila=yyline; columna = yycolumn; addList(TipoToken.RELACIONAL); yybegin(YYINITIAL);
             }
           // fall through
-          case 104: break;
+          case 105: break;
           case 23:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS_IGUAL); yybegin(YYINITIAL);
             }
           // fall through
-          case 105: break;
+          case 106: break;
           case 24:
             { lexema += yytext();
             }
           // fall through
-          case 106: break;
+          case 107: break;
           case 25:
             { addListaErrores(); yybegin(YYINITIAL);
             }
           // fall through
-          case 107: break;
+          case 108: break;
           case 26:
             { addListaErrores(); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.SIGNOS); yybegin(YYINITIAL);
             }
           // fall through
-          case 108: break;
+          case 109: break;
           case 27:
             { addListaErrores(); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.ARITMETICO); yybegin(YYINITIAL);
             }
           // fall through
-          case 109: break;
+          case 110: break;
           case 28:
             { addListaErrores(); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.RELACIONAL); yybegin(YYINITIAL);
             }
           // fall through
-          case 110: break;
+          case 111: break;
           case 29:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CADENA; yybegin(FINAL);
             }
           // fall through
-          case 111: break;
+          case 112: break;
           case 30:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.AS; yybegin(FINAL);
             }
           // fall through
-          case 112: break;
+          case 113: break;
           case 31:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BY; yybegin(FINAL);
             }
           // fall through
-          case 113: break;
+          case 114: break;
           case 32:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.IF; yybegin(FINAL);
             }
           // fall through
-          case 114: break;
+          case 115: break;
           case 33:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ON; yybegin(FINAL);
             }
           // fall through
-          case 115: break;
+          case 116: break;
           case 34:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.LOGICO; yybegin(FINAL);
             }
           // fall through
-          case 116: break;
+          case 117: break;
           case 35:
             { lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.COMENTARIO);
             }
           // fall through
-          case 117: break;
+          case 118: break;
           case 36:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DECIMAL; yybegin(FINAL);
             }
           // fall through
-          case 118: break;
+          case 119: break;
           case 37:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ADD; yybegin(FINAL);
             }
           // fall through
-          case 119: break;
+          case 120: break;
           case 38:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ASC; yybegin(FINAL);
             }
           // fall through
-          case 120: break;
+          case 121: break;
           case 39:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FUNCION_DE_AGREGACION; yybegin(FINAL);
             }
           // fall through
-          case 121: break;
+          case 122: break;
           case 40:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.KEY; yybegin(FINAL);
             }
           // fall through
-          case 122: break;
+          case 123: break;
           case 41:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.LOGICO_NOT; yybegin(FINAL);
             }
           // fall through
-          case 123: break;
+          case 124: break;
           case 42:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.SET; yybegin(FINAL);
             }
           // fall through
-          case 124: break;
+          case 125: break;
           case 43:
             { addList(tipo); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.COMENTARIO); yybegin(YYINITIAL);
             }
           // fall through
-          case 125: break;
+          case 126: break;
           case 44:
             { addListaErrores(); lexema = yytext(); fila = yyline; columna = yycolumn; addList(TipoToken.COMENTARIO); yybegin(YYINITIAL);
             }
           // fall through
-          case 126: break;
+          case 127: break;
           case 45:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DATE; yybegin(FINAL);
             }
           // fall through
-          case 127: break;
+          case 128: break;
           case 46:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DESC; yybegin(FINAL);
             }
           // fall through
-          case 128: break;
+          case 129: break;
           case 47:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DROP; yybegin(FINAL);
             }
           // fall through
-          case 129: break;
+          case 130: break;
           case 48:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FROM; yybegin(FINAL);
             }
           // fall through
-          case 130: break;
+          case 131: break;
           case 49:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.INTO; yybegin(FINAL);
             }
           // fall through
-          case 131: break;
+          case 132: break;
           case 50:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.JOIN; yybegin(FINAL);
             }
           // fall through
-          case 132: break;
+          case 133: break;
           case 51:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.NULL; yybegin(FINAL);
             }
           // fall through
-          case 133: break;
+          case 134: break;
           case 52:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.TEXT; yybegin(FINAL);
             }
           // fall through
-          case 134: break;
+          case 135: break;
           case 53:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BOOLEANO; yybegin(FINAL);
             }
           // fall through
-          case 135: break;
+          case 136: break;
           case 54:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.TYPE; yybegin(FINAL);
             }
           // fall through
-          case 136: break;
+          case 137: break;
           case 55:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ALTER; yybegin(FINAL);
             }
           // fall through
-          case 137: break;
+          case 138: break;
           case 56:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.EXIST; yybegin(FINAL);
             }
           // fall through
-          case 138: break;
+          case 139: break;
           case 57:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.GROUP; yybegin(FINAL);
             }
           // fall through
-          case 139: break;
+          case 140: break;
           case 58:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.LIMIT; yybegin(FINAL);
             }
           // fall through
-          case 140: break;
+          case 141: break;
           case 59:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ORDER; yybegin(FINAL);
             }
           // fall through
-          case 141: break;
+          case 142: break;
           case 60:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.TABLE; yybegin(FINAL);
             }
           // fall through
-          case 142: break;
+          case 143: break;
           case 61:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.WHERE; yybegin(FINAL);
             }
           // fall through
-          case 143: break;
+          case 144: break;
           case 62:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BIGINT; yybegin(FINAL);
             }
           // fall through
-          case 144: break;
+          case 145: break;
           case 63:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.COLUMN; yybegin(FINAL);
             }
           // fall through
-          case 145: break;
+          case 146: break;
           case 64:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CREATE; yybegin(FINAL);
             }
           // fall through
-          case 146: break;
+          case 147: break;
           case 65:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DELETE; yybegin(FINAL);
             }
           // fall through
-          case 147: break;
+          case 148: break;
           case 66:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.INSERT; yybegin(FINAL);
             }
           // fall through
-          case 148: break;
+          case 149: break;
           case 67:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.SELECT; yybegin(FINAL);
             }
           // fall through
-          case 149: break;
+          case 150: break;
           case 68:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.SERIAL; yybegin(FINAL);
             }
           // fall through
-          case 150: break;
+          case 151: break;
           case 69:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.UNIQUE; yybegin(FINAL);
             }
           // fall through
-          case 151: break;
+          case 152: break;
           case 70:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.UPDATE; yybegin(FINAL);
             }
           // fall through
-          case 152: break;
+          case 153: break;
           case 71:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.VALUES; yybegin(FINAL);
             }
           // fall through
-          case 153: break;
+          case 154: break;
           case 72:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BOOLEAN; yybegin(FINAL);
             }
           // fall through
-          case 154: break;
+          case 155: break;
           case 73:
             { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CASCADE; yybegin(FINAL);
             }
           // fall through
-          case 155: break;
-          case 74:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FOREIGN; yybegin(FINAL);
-            }
-          // fall through
           case 156: break;
-          case 75:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.INTEGER; yybegin(FINAL);
+          case 74:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DECIMAL_TIPO; yybegin(FINAL);
             }
           // fall through
           case 157: break;
-          case 76:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.NUMERIC; yybegin(FINAL);
+          case 75:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FOREIGN; yybegin(FINAL);
             }
           // fall through
           case 158: break;
-          case 77:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.PRIMARY; yybegin(FINAL);
+          case 76:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.INTEGER; yybegin(FINAL);
             }
           // fall through
           case 159: break;
-          case 78:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.VARCHAR; yybegin(FINAL);
+          case 77:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.NUMERIC; yybegin(FINAL);
             }
           // fall through
           case 160: break;
-          case 79:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DATABASE; yybegin(FINAL);
+          case 78:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.PRIMARY; yybegin(FINAL);
             }
           // fall through
           case 161: break;
-          case 80:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CONSTRAINT; yybegin(FINAL);
+          case 79:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.VARCHAR; yybegin(FINAL);
             }
           // fall through
           case 162: break;
-          case 81:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.REFERENCES; yybegin(FINAL);
+          case 80:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DATABASE; yybegin(FINAL);
             }
           // fall through
           case 163: break;
-          case 82:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FECHA; yybegin(FINAL);
+          case 81:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CONSTRAINT; yybegin(FINAL);
             }
           // fall through
           case 164: break;
+          case 82:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.REFERENCES; yybegin(FINAL);
+            }
+          // fall through
+          case 165: break;
+          case 83:
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.FECHA; yybegin(FINAL);
+            }
+          // fall through
+          case 166: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

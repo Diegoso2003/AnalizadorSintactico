@@ -40,10 +40,7 @@ public class ReporteLexico extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "token", "linea", "columna", "descripcion"
@@ -77,6 +74,8 @@ public class ReporteLexico extends javax.swing.JFrame {
             datos[1] = token.getFila();
             datos[2] = token.getColumna();
             datos[3] = "token no reconocido";
+            tabla.addRow(datos);
+            datos = new Object[4];
         }
         this.repaint();
     }

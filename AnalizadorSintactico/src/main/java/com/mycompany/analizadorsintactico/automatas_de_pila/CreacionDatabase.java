@@ -26,6 +26,7 @@ public class CreacionDatabase {
     public boolean analizar(List<Token> tokens){
         contador.guardarPunto();
         List<Token> lista = tokens;
+        pila.clear();
         pila.add(';');
         pila.add('i');
         pila.add('d');

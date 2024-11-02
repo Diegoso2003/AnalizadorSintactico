@@ -4,6 +4,7 @@
  */
 package com.mycompany.analizadorsintactico.frontend;
 
+import com.mycompany.analizadorsintactico.otros.InformeDTO;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,14 +34,11 @@ public class ReporteAcciones extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Insert", "Update", "Create", "Alter", "Select ", "Delete"
@@ -70,8 +68,16 @@ public class ReporteAcciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void agregar(){
-        
+    public void agregar(InformeDTO informe){
+        Object[] datos = new Object[6];
+        datos[0] = informe.getInsert();
+        datos[1] = informe.getUpdate();
+        datos[2] = informe.getCreate();
+        datos[3] = informe.getAlter();
+        datos[4] = informe.getSelect();
+        datos[5] = informe.getDelete();
+        model.addRow(datos);
+        this.repaint();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

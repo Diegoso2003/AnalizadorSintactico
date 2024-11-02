@@ -37,6 +37,7 @@ public class CreacionTablas extends AutomataPila{
     @Override
     protected void apilar(List<Token> tokens) throws TokenException{
         boolean finInstruccion = false;
+        tabla = new ArrayList<>();
         while(!finInstruccion && contador.getContadorActual() < tokens.size()){
             Token token = tokens.get(contador.getContadorActual());
             switch(token.getToken()){

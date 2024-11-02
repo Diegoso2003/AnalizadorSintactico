@@ -14,6 +14,7 @@ public class InformeDTO {
     private int update;
     private int delete;
     private int create;
+    private int alter;
 
     public int getInsert() {
         return insert;
@@ -53,6 +54,14 @@ public class InformeDTO {
 
     public void setCreate(int create) {
         this.create = create;
+    }
+
+    public int getAlter() {
+        return alter;
+    }
+
+    public void setAlter(int alter) {
+        this.alter = alter;
     }
     
 }

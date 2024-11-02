@@ -6,6 +6,7 @@ package com.mycompany.analizadorsintactico.frontend;
 
 import com.mycompany.analizadorsintactico.AnalizadorLexico1;
 import com.mycompany.analizadorsintactico.AnalizadorSintactico;
+import com.mycompany.analizadorsintactico.otros.InformeDTO;
 import com.mycompany.analizadorsintactico.token.Token;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
@@ -30,6 +31,7 @@ public class Editor extends javax.swing.JFrame {
     private List<Token> erroreG;
     private AnalizadorSintactico sintactico;
     private List<List<Token>> tablasG;
+    private InformeDTO informe;
     private boolean hacer;
 
     /**
@@ -42,6 +44,7 @@ public class Editor extends javax.swing.JFrame {
         numFilas = 1;
         hacer = false;
         erroreG = new ArrayList<>();
+        informe = new InformeDTO();
         tablasG = new ArrayList<>();
     }
 
@@ -162,6 +165,11 @@ public class Editor extends javax.swing.JFrame {
         jMenu3.add(tablasMod);
 
         acciones.setText("Reporte De Acciones");
+        acciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accionesActionPerformed(evt);
+            }
+        });
         jMenu3.add(acciones);
 
         tablas.setText("Reporte Tablas");
@@ -189,11 +197,14 @@ public class Editor extends javax.swing.JFrame {
         sintactico.analizar(tokens);
         tablasG = sintactico.getTablaC();
         erroreG = sintactico.getErroresS();
+        informe = sintactico.getReporte();
         hacer = true;
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private void reporteLexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteLexicoActionPerformed
-        // TODO add your handling code here:
+        ReporteLexico j = new ReporteLexico();
+        j.agregar(errores);
+        j.setVisible(true);
     }//GEN-LAST:event_reporteLexicoActionPerformed
 
     private void tablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablasActionPerformed
@@ -203,8 +214,16 @@ public class Editor extends javax.swing.JFrame {
     }//GEN-LAST:event_tablasActionPerformed
 
     private void erroresSintacticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_erroresSintacticosActionPerformed
-        
+        ReporteSintactico re = new ReporteSintactico();
+        re.agregar(erroreG);
+        re.setVisible(true);
     }//GEN-LAST:event_erroresSintacticosActionPerformed
+
+    private void accionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accionesActionPerformed
+        ReporteAcciones d = new ReporteAcciones();
+        d.agregar(informe);
+        d.setVisible(true);
+    }//GEN-LAST:event_accionesActionPerformed
 
     private javax.swing.JTextPane editor;
     // Variables declaration - do not modify//GEN-BEGIN:variables

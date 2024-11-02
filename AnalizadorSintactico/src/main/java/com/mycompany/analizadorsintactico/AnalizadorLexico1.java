@@ -113,16 +113,16 @@ public class AnalizadorLexico1 {
     "\1\46\1\47\24\0\1\50\1\0\1\51\7\0\1\52"+
     "\11\0\1\53\1\54\12\0\1\55\2\0\1\56\1\57"+
     "\2\0\1\60\3\0\1\61\1\62\1\0\1\63\7\0"+
-    "\1\64\1\65\1\66\6\0\1\67\11\0\1\70\1\0"+
-    "\1\71\2\0\1\72\1\0\1\73\4\0\1\74\4\0"+
-    "\1\75\1\0\1\76\2\0\1\77\1\0\1\100\2\0"+
-    "\1\101\1\0\1\102\4\0\1\103\1\104\1\105\1\106"+
-    "\1\107\2\0\1\110\1\111\2\0\1\112\1\113\1\114"+
-    "\1\115\1\116\1\0\1\117\2\0\1\120\5\0\1\121"+
-    "\1\122\1\0\1\123";
+    "\1\64\1\65\1\66\6\0\1\67\13\0\1\70\2\0"+
+    "\1\71\1\0\1\72\4\0\1\73\4\0\1\74\1\0"+
+    "\1\75\2\0\1\76\1\0\1\77\2\0\1\100\1\101"+
+    "\1\0\1\102\4\0\1\103\1\104\1\105\1\106\1\107"+
+    "\2\0\1\110\1\111\2\0\1\112\1\113\1\114\1\115"+
+    "\1\116\1\0\1\117\2\0\1\120\5\0\1\121\1\122"+
+    "\1\0\1\123";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[273];
+    int [] result = new int[274];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -173,18 +173,18 @@ public class AnalizadorLexico1 {
     "\0\u1784\0\u17af\0\u17da\0\u1805\0\u1830\0\u185b\0\201\0\201"+
     "\0\201\0\u1886\0\u18b1\0\u18dc\0\u1907\0\u1932\0\u195d\0\201"+
     "\0\u1988\0\u19b3\0\u19de\0\u1a09\0\u1a34\0\u1a5f\0\u1a8a\0\u1ab5"+
-    "\0\u1ae0\0\201\0\u1b0b\0\201\0\u1b36\0\u1b61\0\201\0\u1b8c"+
-    "\0\201\0\u1bb7\0\u1be2\0\u1c0d\0\u1c38\0\201\0\u1c63\0\u1c8e"+
-    "\0\u1cb9\0\u1ce4\0\201\0\u1d0f\0\201\0\u1d3a\0\u1d65\0\201"+
-    "\0\u1d90\0\201\0\u1dbb\0\u1de6\0\201\0\u1e11\0\201\0\u1e3c"+
-    "\0\u1e67\0\u1e92\0\u1ebd\0\201\0\201\0\201\0\201\0\201"+
-    "\0\u1ee8\0\u1f13\0\201\0\201\0\u1f3e\0\u1f69\0\201\0\201"+
-    "\0\201\0\201\0\201\0\u1f94\0\201\0\u1fbf\0\u1fea\0\201"+
-    "\0\u2015\0\u2040\0\u206b\0\u2096\0\u20c1\0\201\0\201\0\u20ec"+
-    "\0\201";
+    "\0\u1ae0\0\u1b0b\0\u1b36\0\201\0\u1b61\0\u1b8c\0\201\0\u1bb7"+
+    "\0\201\0\u1be2\0\u1c0d\0\u1c38\0\u1c63\0\201\0\u1c8e\0\u1cb9"+
+    "\0\u1ce4\0\u1d0f\0\201\0\u1d3a\0\201\0\u1d65\0\u1d90\0\201"+
+    "\0\u1dbb\0\201\0\u1de6\0\u1e11\0\201\0\201\0\u1e3c\0\201"+
+    "\0\u1e67\0\u1e92\0\u1ebd\0\u1ee8\0\201\0\201\0\201\0\201"+
+    "\0\201\0\u1f13\0\u1f3e\0\201\0\201\0\u1f69\0\u1f94\0\201"+
+    "\0\201\0\201\0\201\0\201\0\u1fbf\0\201\0\u1fea\0\u2015"+
+    "\0\201\0\u2040\0\u206b\0\u2096\0\u20c1\0\u20ec\0\201\0\201"+
+    "\0\u2117\0\201";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[273];
+    int [] result = new int[274];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -266,21 +266,21 @@ public class AnalizadorLexico1 {
     "\1\343\26\0\5\71\1\72\4\71\1\344\40\71\43\0"+
     "\1\345\27\0\1\346\55\0\1\347\64\0\1\350\56\0"+
     "\1\351\35\0\1\352\46\0\1\353\52\0\1\354\56\0"+
-    "\1\355\54\0\1\356\67\0\1\357\33\0\1\360\56\0"+
-    "\1\361\63\0\1\362\35\0\1\363\71\0\1\364\42\0"+
-    "\1\365\43\0\1\366\52\0\1\367\70\0\1\370\30\0"+
-    "\1\371\32\0\5\71\1\72\6\71\1\372\36\71\35\0"+
-    "\1\373\41\0\1\374\46\0\1\375\74\0\1\376\43\0"+
-    "\1\377\54\0\1\u0100\56\0\1\u0101\33\0\1\u0102\100\0"+
-    "\1\u0103\37\0\1\u0104\56\0\1\u0105\11\0\5\71\1\72"+
-    "\6\71\1\u0106\36\71\30\0\1\u0107\46\0\1\u0108\50\0"+
-    "\1\u0109\30\0\5\71\1\72\4\71\1\u010a\40\71\35\0"+
-    "\1\u010b\41\0\1\u010c\26\0\5\71\1\72\6\71\1\u010d"+
-    "\36\71\43\0\1\u010e\51\0\1\u010f\10\0\5\71\1\72"+
-    "\6\71\1\u0110\43\71\1\u0111\45\71";
+    "\1\355\70\0\1\356\36\0\1\357\67\0\1\360\33\0"+
+    "\1\361\56\0\1\362\63\0\1\363\35\0\1\364\71\0"+
+    "\1\365\42\0\1\366\43\0\1\367\52\0\1\370\70\0"+
+    "\1\371\30\0\1\372\32\0\5\71\1\72\6\71\1\373"+
+    "\36\71\35\0\1\374\41\0\1\375\46\0\1\376\74\0"+
+    "\1\377\43\0\1\u0100\54\0\1\u0101\56\0\1\u0102\33\0"+
+    "\1\u0103\100\0\1\u0104\37\0\1\u0105\56\0\1\u0106\11\0"+
+    "\5\71\1\72\6\71\1\u0107\36\71\30\0\1\u0108\46\0"+
+    "\1\u0109\50\0\1\u010a\30\0\5\71\1\72\4\71\1\u010b"+
+    "\40\71\35\0\1\u010c\41\0\1\u010d\26\0\5\71\1\72"+
+    "\6\71\1\u010e\36\71\43\0\1\u010f\51\0\1\u0110\10\0"+
+    "\5\71\1\72\6\71\1\u0111\43\71\1\u0112\45\71";
 
   private static int [] zzUnpacktrans() {
-    int [] result = new int[8471];
+    int [] result = new int[8514];
     int offset = 0;
     offset = zzUnpacktrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -330,15 +330,14 @@ public class AnalizadorLexico1 {
     "\1\0\1\11\1\0\2\1\1\11\1\0\3\11\24\0"+
     "\1\11\1\0\1\11\7\0\1\11\11\0\2\1\12\0"+
     "\1\11\2\0\2\11\2\0\1\11\3\0\2\11\1\0"+
-    "\1\11\7\0\3\11\6\0\1\11\11\0\1\11\1\0"+
-    "\1\11\2\0\1\11\1\0\1\11\4\0\1\11\4\0"+
-    "\1\11\1\0\1\11\2\0\1\11\1\0\1\11\2\0"+
-    "\1\11\1\0\1\11\4\0\5\11\2\0\2\11\2\0"+
-    "\5\11\1\0\1\11\2\0\1\11\5\0\2\11\1\0"+
-    "\1\11";
+    "\1\11\7\0\3\11\6\0\1\11\13\0\1\11\2\0"+
+    "\1\11\1\0\1\11\4\0\1\11\4\0\1\11\1\0"+
+    "\1\11\2\0\1\11\1\0\1\11\2\0\2\11\1\0"+
+    "\1\11\4\0\5\11\2\0\2\11\2\0\5\11\1\0"+
+    "\1\11\2\0\1\11\5\0\2\11\1\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[273];
+    int [] result = new int[274];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -1141,52 +1140,52 @@ public class AnalizadorLexico1 {
           // fall through
           case 138: break;
           case 56:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.EXIST; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.GROUP; yybegin(FINAL);
             }
           // fall through
           case 139: break;
           case 57:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.GROUP; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.LIMIT; yybegin(FINAL);
             }
           // fall through
           case 140: break;
           case 58:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.LIMIT; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ORDER; yybegin(FINAL);
             }
           // fall through
           case 141: break;
           case 59:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.ORDER; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.TABLE; yybegin(FINAL);
             }
           // fall through
           case 142: break;
           case 60:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.TABLE; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.WHERE; yybegin(FINAL);
             }
           // fall through
           case 143: break;
           case 61:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.WHERE; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BIGINT; yybegin(FINAL);
             }
           // fall through
           case 144: break;
           case 62:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.BIGINT; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.COLUMN; yybegin(FINAL);
             }
           // fall through
           case 145: break;
           case 63:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.COLUMN; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CREATE; yybegin(FINAL);
             }
           // fall through
           case 146: break;
           case 64:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.CREATE; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DELETE; yybegin(FINAL);
             }
           // fall through
           case 147: break;
           case 65:
-            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.DELETE; yybegin(FINAL);
+            { lexema = yytext(); fila = yyline; columna = yycolumn; tipo = TipoToken.EXIST; yybegin(FINAL);
             }
           // fall through
           case 148: break;

@@ -5,6 +5,7 @@
 package com.mycompany.analizadorsintactico;
 
 import com.mycompany.analizadorsintactico.automatas_de_pila.*;
+import com.mycompany.analizadorsintactico.otros.InformeDTO;
 import com.mycompany.analizadorsintactico.singletons.Contador;
 import com.mycompany.analizadorsintactico.token.TipoToken;
 import com.mycompany.analizadorsintactico.token.Token;
@@ -29,6 +30,7 @@ public class AnalizadorSintactico {
     private final Modificador mod;
     private final Insert insert;
     private final Lectura select;
+    private InformeDTO reporte;
     private int create;
     private int delet;
     private int update;
@@ -38,6 +40,7 @@ public class AnalizadorSintactico {
 
     public AnalizadorSintactico() {
         tablaC = new ArrayList<>();
+        reporte = new InformeDTO();
         contador = Contador.conseguirContador();
         baseDeDatos = new CreacionDatabase();
         tabla = new CreacionTablas();
@@ -60,7 +63,7 @@ public class AnalizadorSintactico {
         delet = 0;
         update = 0;
         selec = 0;
-        isert++;
+        isert = 0;
         alter = 0;
         while (contador.getContadorActual() < this.lista.size()) {
             if (baseDeDatos.analizar(this.lista)) {
@@ -94,10 +97,10 @@ public class AnalizadorSintactico {
                 System.out.println("es un select");
             } else {
                 contador.regresarPuntoGuardado();
-                contador.guardarPunto();
                 System.out.println("cadena invalida");
                 Token token = this.lista.get(contador.getContadorActual());
                 erroresS.add(token);
+                contador.guardarPunto();
                 contador.aumentarYObtener();
             }
         }
@@ -115,32 +118,18 @@ public class AnalizadorSintactico {
         return tablaC;
     }
 
-    public int getCreate() {
-        return create;
-    }
-
-    public int getDelet() {
-        return delet;
-    }
-
-    public int getUpdate() {
-        return update;
-    }
-
-    public int getSelec() {
-        return selec;
-    }
-
-    public int getAlter() {
-        return alter;
-    }
-
-    public int getIsert() {
-        return isert;
-    }
-
     public List<Token> getErroresS() {
         return erroresS;
+    }
+
+    public InformeDTO getReporte() {
+        reporte.setCreate(create);
+        reporte.setDelete(delet);
+        reporte.setInsert(isert);
+        reporte.setSelect(selec);
+        reporte.setUpdate(update);
+        reporte.setAlter(alter);
+        return reporte;
     }
     
 }
