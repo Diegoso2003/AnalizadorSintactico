@@ -50,5 +50,5 @@ public class Token {
     public String toString() {
         return "Token{" + "token=" + token + ", lexema=" + lexema + ", columna=" + columna + ", fila=" + fila + '}';
     }
-    
-}
+
+    }

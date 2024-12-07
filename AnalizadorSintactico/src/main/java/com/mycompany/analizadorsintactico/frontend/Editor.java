@@ -67,6 +67,7 @@ public class Editor extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         reporteLexico = new javax.swing.JMenuItem();
         erroresSintacticos = new javax.swing.JMenuItem();
@@ -140,6 +141,15 @@ public class Editor extends javax.swing.JFrame {
 
         jMenu2.setText("Grafico");
         jMenu2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        jMenuItem2.setText("crearGrafico");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Reportes");
@@ -225,6 +235,12 @@ public class Editor extends javax.swing.JFrame {
         d.setVisible(true);
     }//GEN-LAST:event_accionesActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        GraficosVista f = new GraficosVista();
+        f.agregarTablas(tablasG);
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private javax.swing.JTextPane editor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem acciones;
@@ -236,6 +252,7 @@ public class Editor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -325,15 +342,6 @@ public class Editor extends javax.swing.JFrame {
 
             this.tokens = analizadorLexico.getLista();
             this.errores = analizadorLexico.getListaErrores();
-            if (hacer) {
-                for (Token token : tokens) {
-                    System.out.print(token.getLexema());
-                    System.out.print(", " + token.getFila());
-                    System.out.print(", " + token.getColumna());
-                    System.out.println("");
-                }
-            }
-            hacer = false;
         } catch (Exception e) {
         }
     }
